@@ -1,0 +1,47 @@
+node_modules/
+dist/
+coverage/
+studio/
+playground/
+figma-plugin/code.js
+figma-plugin/ui.html
+package-lock.json
+
+# Mirrors eslint.config.js's own ignore list: the whole docs/ site (VitePress
+# config, theme .vue/.css, build output) plus every markdown file repo-wide
+# (README, CHANGELOG, CONTRIBUTING, i18n/*) are unlinted there too — same
+# hands-off boundary applies here.
+docs/**
+*.md
+
+# Go-template YAML — {{- if }} / {{- end }} control blocks aren't valid YAML
+# on their own, so Prettier's parser hard-errors on every file here.
+deploy/helm/plumb/templates/
+
+# No Prettier parser for HCL; every .tf file errors "No parser could be
+# inferred" rather than producing a style diff.
+deploy/terraform/
+
+# Grandfather clause: formatOnSave is on, and every file below predates this
+# config with hand-tuned line-wrapping Prettier can't reproduce at any single
+# printWidth (measured 2026-09-12 — see PR discussion). Reformatting them on
+# next save would rewrite lines the maintainer wrapped on purpose, unrelated
+# to whatever the save was actually for. New files aren't affected — they're
+# Prettier-native from their first save, so this list should only ever
+# shrink as these are deliberately reformatted, never grow.
+figma-plugin/assets.ts
+figma-plugin/code.ts
+figma-plugin/emit.ts
+figma-plugin/emit/**
+figma-plugin/foundations.ts
+figma-plugin/inventory.ts
+figma-plugin/motion-emit.ts
+figma-plugin/requests.ts
+figma-plugin/serialize.ts
+src/**
+scripts/**
+bench/**
+deploy/k8s/plumb.yaml
+deploy/helm/plumb/values.schema.json
+.github/workflows/release.yml
+eslint.config.js

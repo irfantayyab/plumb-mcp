@@ -27,6 +27,13 @@ bench/report.json
 .mcp.json
 coverage/
 
+# Local tooling scaffolding (editor/assistant config dropped at the repo
+# root, e.g. _claude-settings/) — machine-specific, never meant to be
+# committed. Root-anchored so it doesn't catch a real `_`-prefixed dir
+# nested under src/ or elsewhere.
+/_*/
+.vscode/
+
 # Terraform / OpenTofu working state — never committed.
 .terraform/
 *.tfstate
